@@ -1,4 +1,5 @@
 rootProject.name = "podcast"
 include ':app',
         ':common',
-        ':features:feed'
+        ':features:feed',
+        ':system:rss_parser'

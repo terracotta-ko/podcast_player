@@ -18,11 +18,22 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
+            splits.abi.enable false
+            splits.density.enable false
+
+            testCoverageEnabled false
             minifyEnabled false
+        }
+
+        release {
+            testCoverageEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
