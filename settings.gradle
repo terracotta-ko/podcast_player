@@ -1,3 +1,4 @@
 rootProject.name = "podcast"
 include ':app',
+        ':common',
         ':features:feed'

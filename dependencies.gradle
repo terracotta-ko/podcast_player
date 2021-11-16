@@ -29,4 +29,5 @@ ext {
     gsonVersion = '2.8.6'
     okHttpVersion = '4.9.0'
     rssparserVersion = '4.0.2'
+    glideVersion = '4.12.0'
 }
