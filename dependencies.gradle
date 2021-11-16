@@ -28,4 +28,5 @@ ext {
     retrofitVersion = '2.9.0'
     gsonVersion = '2.8.6'
     okHttpVersion = '4.9.0'
+    rssparserVersion = '4.0.2'
 }
