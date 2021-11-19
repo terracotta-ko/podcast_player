@@ -1,5 +1,7 @@
 package com.kobe.feed.base
 
+import com.kobe.feed.core.FeedDomain
+
 internal interface FeedContract {
 
     interface View {
@@ -27,6 +29,6 @@ internal interface FeedContract {
 
     interface Repository {
 
-        suspend fun fetchList()
+        suspend fun fetchList(): FeedDomain
     }
 }

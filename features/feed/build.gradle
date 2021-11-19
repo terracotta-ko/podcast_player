@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation project(':common')
     implementation project(':system:rss_parser')
 
     implementation "androidx.appcompat:appcompat:$androidxAppcompatVersion"

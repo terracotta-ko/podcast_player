@@ -2,11 +2,10 @@ package com.kobe.feed.app
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.kobe.feed.R
+import androidx.fragment.app.Fragment
 import com.kobe.feed.databinding.FragmentFeedBinding
 
 class FeedFragment : Fragment() {
