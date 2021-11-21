@@ -11,6 +11,10 @@ internal interface FeedContract {
         fun showLoading()
 
         fun hideLoading()
+
+        fun stopRefreshing()
+
+        fun showError(error: String)
     }
 
     interface Presenter {
@@ -20,11 +24,6 @@ internal interface FeedContract {
         fun unbindView()
 
         fun onViewCreated()
-    }
-
-    interface Interactor {
-
-        suspend fun getList()
     }
 
     interface Repository {

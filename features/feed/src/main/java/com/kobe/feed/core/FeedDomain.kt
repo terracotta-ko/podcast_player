@@ -5,7 +5,7 @@ internal sealed class FeedDomain {
     object Invalid : FeedDomain()
 
     data class Valid(
-        val title: String?,
+        val title: String,
         val link: String
     ) : FeedDomain()
 }
