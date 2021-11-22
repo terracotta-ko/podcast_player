@@ -18,7 +18,8 @@ internal class FeedServiceLocator(private val context: Context) {
         )
     }
 
-    fun getRecyclerViewAdapter() = FeedRecyclerViewAdapter()
+    fun getRecyclerViewAdapter(actions: FeedRecyclerViewAdapter.Actions) =
+        FeedRecyclerViewAdapter(actions)
 
     private fun getRepository(): FeedContract.Repository {
         return FeedRepository(getRssParser(), getDomainMapper())

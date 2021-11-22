@@ -2,6 +2,7 @@ package com.kobe.feed.app
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +17,8 @@ import com.kobe.feed_common.base.FeedCommonItemModel
 
 class FeedFragment :
     Fragment(),
-    FeedContract.View {
+    FeedContract.View,
+    FeedRecyclerViewAdapter.Actions {
 
     companion object {
         fun newInstance() = FeedFragment()
@@ -33,7 +35,7 @@ class FeedFragment :
 
         val serviceLocator = FeedServiceLocator(context)
         presenter = serviceLocator.getPresenter()
-        recyclerViewAdapter = serviceLocator.getRecyclerViewAdapter()
+        recyclerViewAdapter = serviceLocator.getRecyclerViewAdapter(this)
     }
 
     override fun onCreateView(
@@ -76,6 +78,16 @@ class FeedFragment :
 
     override fun showError(error: String) {
         Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun gotoEpisode(position: Int) {
+        Log.d("KKD", "position: $position")
+    }
+
+    //>> FeedRecyclerViewAdapter.Actions
+
+    override fun onEpisodeClicked(position: Int) {
+        presenter.onEpisodeClicked(position)
     }
 
     //>> private functions

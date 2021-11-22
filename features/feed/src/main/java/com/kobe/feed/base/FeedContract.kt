@@ -14,6 +14,8 @@ internal interface FeedContract {
         fun hideLoading()
 
         fun showError(error: String)
+
+        fun gotoEpisode(position: Int)
     }
 
     interface Presenter {
@@ -23,6 +25,8 @@ internal interface FeedContract {
         fun unbindView()
 
         fun onViewCreated()
+
+        fun onEpisodeClicked(position: Int)
     }
 
     interface Repository {

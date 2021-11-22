@@ -14,10 +14,9 @@ internal class FeedItemModelMapperDefault : FeedItemModelMapper {
         return FeedCommonItemModel.Episode(
             domain.title,
             domain.author,
-            domain.link,
+            domain.audio,
             domain.pubDate,
             domain.description,
-            domain.content,
             domain.image
         )
     }

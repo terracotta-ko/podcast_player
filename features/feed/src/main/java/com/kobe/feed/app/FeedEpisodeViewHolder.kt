@@ -6,7 +6,8 @@ import com.kobe.feed.databinding.FeedItemEpisodeBinding
 import com.kobe.feed_common.base.FeedCommonItemModel
 
 internal class FeedEpisodeViewHolder(
-    private val viewBinding: FeedItemEpisodeBinding
+    private val viewBinding: FeedItemEpisodeBinding,
+    private val actions: FeedRecyclerViewAdapter.Actions
 ) : RecyclerView.ViewHolder(viewBinding.root) {
 
     fun bind(model: FeedCommonItemModel.Episode) {
@@ -14,6 +15,8 @@ internal class FeedEpisodeViewHolder(
             image.loadImage(model.image)
             title.text = model.title
             date.text = model.pubDate
+
+            root.setOnClickListener { actions.onEpisodeClicked(absoluteAdapterPosition) }
         }
     }
 }

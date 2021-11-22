@@ -1,5 +1,6 @@
 package com.kobe.feed.data
 
+import android.util.Log
 import com.kobe.feed.core.FeedEpisodeDomain
 import com.kobe.rss_parser.RssParserArticle
 
@@ -12,11 +13,11 @@ internal class FeedEpisodeDomainMapperDefault : FeedEpisodeDomainMapper {
 
     override fun toDomain(dto: RssParserArticle): FeedEpisodeDomain? {
         val title = dto.title
-        val link = dto.link
+        val audio = dto.audio
 
         return when {
             title.isNullOrBlank() -> null
-            link.isNullOrBlank() -> null
+            audio.isNullOrBlank() -> null
             else -> {
                 val pubDate = dto.pubDate?.let {
                     it.substring(0, it.indexOfFirst { c -> c == '+' })
@@ -25,10 +26,9 @@ internal class FeedEpisodeDomainMapperDefault : FeedEpisodeDomainMapper {
                 FeedEpisodeDomain(
                     title,
                     dto.author ?: "",
-                    link,
+                    audio,
                     pubDate,
                     dto.description ?: "",
-                    dto.content ?: "",
                     dto.itunesArticleData?.image ?: "",
                 )
             }

@@ -7,7 +7,14 @@ import com.kobe.feed.databinding.FeedItemCoverBinding
 import com.kobe.feed.databinding.FeedItemEpisodeBinding
 import com.kobe.feed_common.base.FeedCommonItemModel
 
-internal class FeedRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+internal class FeedRecyclerViewAdapter(
+    private val actions: Actions
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    interface Actions {
+
+        fun onEpisodeClicked(position: Int)
+    }
 
     companion object {
         private const val VIEW_TYPE_COVER = 0
@@ -33,7 +40,8 @@ internal class FeedRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewH
                         LayoutInflater.from(parent.context),
                         parent,
                         false
-                    )
+                    ),
+                    actions
                 )
             }
         }
