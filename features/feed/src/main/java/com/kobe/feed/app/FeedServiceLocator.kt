@@ -10,42 +10,34 @@ import com.kobe.rss_parser.RssParserProvider
 
 internal class FeedServiceLocator(private val context: Context) {
 
-    fun getPresenter(): FeedContract.Presenter {
-        return FeedPresenter(
+    fun getPresenter(): FeedContract.Presenter =
+        FeedPresenter(
             getRepository(),
             getModelMapper(),
             getDispatcher()
         )
-    }
 
     fun getRecyclerViewAdapter(actions: FeedRecyclerViewAdapter.Actions) =
         FeedRecyclerViewAdapter(actions)
 
-    private fun getRepository(): FeedContract.Repository {
-        return FeedRepository(getRssParser(), getDomainMapper())
-    }
+    private fun getRepository(): FeedContract.Repository =
+        FeedRepository(getRssParser(), getDomainMapper())
 
-    private fun getRssParser(): RssParser {
-        return RssParserProvider.getInstance(context).parser
-    }
+    private fun getRssParser(): RssParser =
+        RssParserProvider.getInstance(context).parser
 
-    private fun getDomainMapper(): FeedDomainMapper {
-        return FeedDomainMapperDefault(getEpisodeDomainMapper())
-    }
+    private fun getDomainMapper(): FeedDomainMapper =
+        FeedDomainMapperDefault(getEpisodeDomainMapper())
 
-    private fun getEpisodeDomainMapper(): FeedEpisodeDomainMapper {
-        return FeedEpisodeDomainMapperDefault()
-    }
+    private fun getEpisodeDomainMapper(): FeedEpisodeDomainMapper =
+        FeedEpisodeDomainMapperDefault()
 
-    private fun getModelMapper(): FeedModelMapper {
-        return FeedModelMapperDefault(getItemModelMapper())
-    }
+    private fun getModelMapper(): FeedModelMapper =
+        FeedModelMapperDefault(getItemModelMapper())
 
-    private fun getItemModelMapper(): FeedItemModelMapper {
-        return FeedItemModelMapperDefault()
-    }
+    private fun getItemModelMapper(): FeedItemModelMapper =
+        FeedItemModelMapperDefault()
 
-    private fun getDispatcher(): CommonCoroutinesDispatcher {
-        return CommonCoroutinesDispatcherDefault()
-    }
+    private fun getDispatcher(): CommonCoroutinesDispatcher =
+        CommonCoroutinesDispatcherDefault()
 }
