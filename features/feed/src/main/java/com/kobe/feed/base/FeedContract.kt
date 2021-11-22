@@ -15,7 +15,7 @@ internal interface FeedContract {
 
         fun showError(error: String)
 
-        fun gotoEpisode(position: Int)
+        fun gotoEpisodeDetails(position: Int)
     }
 
     interface Presenter {

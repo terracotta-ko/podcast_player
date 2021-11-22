@@ -51,6 +51,6 @@ internal class FeedPresenter(
     }
 
     override fun onEpisodeClicked(position: Int) {
-        view?.gotoEpisode(position)
+        view?.gotoEpisodeDetails(position)
     }
 }

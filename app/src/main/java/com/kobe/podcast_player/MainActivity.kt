@@ -1,8 +1,8 @@
 package com.kobe.podcast_player
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.kobe.feed.app.FeedFragment
+import androidx.appcompat.app.AppCompatActivity
+import com.kobe.main_page.app.FeedMainPageFragment
 import com.kobe.podcast_player.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, FeedFragment.newInstance())
+                .replace(R.id.fragmentContainer, FeedMainPageFragment.newInstance())
                 .commit()
         }
     }

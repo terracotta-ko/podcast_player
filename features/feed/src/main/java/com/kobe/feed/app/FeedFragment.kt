@@ -2,7 +2,6 @@ package com.kobe.feed.app
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,14 +12,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kobe.feed.base.FeedContract
 import com.kobe.feed.databinding.FragmentFeedBinding
 import com.kobe.feed_common.app.FeedCommonViewModel
+import com.kobe.feed_common.app.withMagePageFragment
 import com.kobe.feed_common.base.FeedCommonItemModel
 
-class FeedFragment :
+internal class FeedFragment :
     Fragment(),
     FeedContract.View,
     FeedRecyclerViewAdapter.Actions {
 
     companion object {
+        const val TAG = "FeedFragment"
+
         fun newInstance() = FeedFragment()
     }
 
@@ -80,8 +82,8 @@ class FeedFragment :
         Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
     }
 
-    override fun gotoEpisode(position: Int) {
-        Log.d("KKD", "position: $position")
+    override fun gotoEpisodeDetails(position: Int) {
+        withMagePageFragment { it.gotoEpisodeDetails(position) }
     }
 
     //>> FeedRecyclerViewAdapter.Actions
