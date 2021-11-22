@@ -1,10 +1,7 @@
 package com.kobe.feed.base
 
-internal sealed class FeedModel {
+import com.kobe.feed_common.base.FeedCommonItemModel
 
-    object Invalid: FeedModel()
-
-    data class Valid(
-        val title: String
-    ): FeedModel()
-}
+data class FeedModel(
+    val episodes: List<FeedCommonItemModel>
+)

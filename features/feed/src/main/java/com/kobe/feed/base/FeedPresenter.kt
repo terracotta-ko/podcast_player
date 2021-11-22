@@ -39,12 +39,12 @@ internal class FeedPresenter(
 
                 view?.run {
                     hideLoading()
-                    updateView()
+                    updateView(model.episodes)
                 }
             } catch (e: Exception) {
                 view?.run {
                     hideLoading()
-                    showError()
+                    showError("something wrong")
                 }
             }
         }

@@ -1,11 +1,16 @@
 package com.kobe.feed.core
 
-internal sealed class FeedDomain {
+internal data class FeedDomain(
+    val image: String,
+    val episodes: List<FeedEpisodeDomain>
+)
 
-    object Invalid : FeedDomain()
-
-    data class Valid(
-        val title: String,
-        val link: String
-    ) : FeedDomain()
-}
+data class FeedEpisodeDomain(
+    val title: String,
+    val author: String,
+    val link: String,
+    val pubDate: String,
+    val description: String,
+    val content: String,
+    val image: String
+)

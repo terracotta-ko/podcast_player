@@ -8,17 +8,15 @@ internal interface FeedDomainMapper {
     fun toDomain(data: RssParserData): FeedDomain
 }
 
-internal class FeedDomainMapperDefault : FeedDomainMapper {
+internal class FeedDomainMapperDefault(
+    private val episodeDomainMapper: FeedEpisodeDomainMapper
+) : FeedDomainMapper {
 
     override fun toDomain(data: RssParserData): FeedDomain {
-        val channelLink = data.link
-        return if (channelLink.isNullOrBlank()) {
-            FeedDomain.Invalid
-        } else {
-            FeedDomain.Valid(
-                data.title ?: "",
-                channelLink
-            )
+        val articles = data.articles.mapNotNull {
+            episodeDomainMapper.toDomain(it)
         }
+
+        return FeedDomain(data.image?.url ?: "", articles)
     }
 }

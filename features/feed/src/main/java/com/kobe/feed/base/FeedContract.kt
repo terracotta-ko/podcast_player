@@ -1,18 +1,17 @@
 package com.kobe.feed.base
 
 import com.kobe.feed.core.FeedDomain
+import com.kobe.feed_common.base.FeedCommonItemModel
 
 internal interface FeedContract {
 
     interface View {
 
-        fun updateView()
+        fun updateView(episodes: List<FeedCommonItemModel>)
 
         fun showLoading()
 
         fun hideLoading()
-
-        fun stopRefreshing()
 
         fun showError(error: String)
     }
