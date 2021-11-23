@@ -13,6 +13,7 @@ import com.kobe.episode_details.app.EpisodeDetailsFragment.Companion.EXTRA_EPISO
 import com.kobe.episode_details.base.EpisodeDetailsContract
 import com.kobe.feed.databinding.FragmentEpisodeDetailsBinding
 import com.kobe.feed_common.app.FeedCommonViewModel
+import com.kobe.feed_common.app.withMagePageFragment
 
 internal class EpisodeDetailsFragment : Fragment(), EpisodeDetailsContract.View {
 
@@ -51,6 +52,8 @@ internal class EpisodeDetailsFragment : Fragment(), EpisodeDetailsContract.View 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupClickListener()
+
         presenter.bindView(this)
 
         val position = arguments.getPosition()
@@ -84,11 +87,25 @@ internal class EpisodeDetailsFragment : Fragment(), EpisodeDetailsContract.View 
     override fun showError(error: String) {
         Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
     }
+
+    override fun gotoPlayerPage(position: Int) {
+        withMagePageFragment { it.gotoPlayerPage(position) }
+    }
+
+    //>> private functions
+
+    private fun setupClickListener() {
+        viewBinding?.run {
+            playIcon.setOnClickListener {
+                presenter.onPlayIconClicked(arguments.getPosition())
+            }
+        }
+    }
 }
 
-private fun Bundle.setPosition(position: Int) {
+internal fun Bundle.setPosition(position: Int) {
     this.putInt(EXTRA_EPISODE_POSITION, position)
 }
 
-private fun Bundle?.getPosition(): Int =
+internal fun Bundle?.getPosition(): Int =
     this?.getInt(EXTRA_EPISODE_POSITION) ?: -1

@@ -8,6 +8,7 @@ import com.kobe.common.extensions.withFragmentActivity
 import com.kobe.episode_details.app.EpisodeDetailsFragment
 import com.kobe.feed.R
 import com.kobe.feed.app.FeedFragment
+import com.kobe.player_page.app.PlayerPageFragment
 
 class FeedMainPageFragment :
     Fragment(R.layout.fragment_feed_main_page) {
@@ -48,6 +49,17 @@ class FeedMainPageFragment :
                 EpisodeDetailsFragment.TAG
             )
             .addToBackStack(EpisodeDetailsFragment.TAG)
+            .commit()
+    }
+
+    fun gotoPlayerPage(position: Int) {
+        childFragmentManager.beginTransaction()
+            .replace(
+                R.id.fragmentContainer,
+                PlayerPageFragment.newInstance(position),
+                PlayerPageFragment.TAG
+            )
+            .addToBackStack(PlayerPageFragment.TAG)
             .commit()
     }
 

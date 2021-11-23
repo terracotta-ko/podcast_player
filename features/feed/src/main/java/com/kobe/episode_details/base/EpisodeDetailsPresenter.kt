@@ -2,7 +2,7 @@ package com.kobe.episode_details.base
 
 import com.kobe.feed_common.base.FeedCommonItemModel
 
-internal class EpisodeDetailsPresenter: EpisodeDetailsContract.Presenter {
+internal class EpisodeDetailsPresenter : EpisodeDetailsContract.Presenter {
 
     private var view: EpisodeDetailsContract.View? = null
 
@@ -15,7 +15,7 @@ internal class EpisodeDetailsPresenter: EpisodeDetailsContract.Presenter {
     }
 
     override fun onViewCreated(model: FeedCommonItemModel?) {
-        when(model) {
+        when (model) {
             null -> view?.showError("something wrong")
             is FeedCommonItemModel.Cover -> view?.showError("something wrong")
             is FeedCommonItemModel.Episode -> {
@@ -25,6 +25,14 @@ internal class EpisodeDetailsPresenter: EpisodeDetailsContract.Presenter {
                     setDescription(model.description)
                 }
             }
+        }
+    }
+
+    override fun onPlayIconClicked(position: Int) {
+        if (position > 0) {
+            view?.gotoPlayerPage(position)
+        } else {
+            view?.showError("something wrong")
         }
     }
 }

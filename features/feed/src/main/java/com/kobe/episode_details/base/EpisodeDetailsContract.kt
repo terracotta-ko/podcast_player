@@ -13,14 +13,18 @@ internal interface EpisodeDetailsContract {
         fun setDescription(description: String)
 
         fun showError(error: String)
+
+        fun gotoPlayerPage(position: Int)
     }
 
     interface Presenter {
 
-        fun bindView(view: EpisodeDetailsContract.View)
+        fun bindView(view: View)
 
         fun unbindView()
 
         fun onViewCreated(model: FeedCommonItemModel?)
+
+        fun onPlayIconClicked(position: Int)
     }
 }
