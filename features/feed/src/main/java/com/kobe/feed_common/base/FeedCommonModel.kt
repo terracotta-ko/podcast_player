@@ -8,7 +8,6 @@ sealed class FeedCommonItemModel {
 
     data class Episode(
         val title: String,
-        val author: String,
         val audio: String,
         val pubDate: String,
         val description: String,

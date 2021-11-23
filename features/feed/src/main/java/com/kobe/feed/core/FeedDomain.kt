@@ -7,7 +7,6 @@ internal data class FeedDomain(
 
 data class FeedEpisodeDomain(
     val title: String,
-    val author: String,
     val audio: String,
     val pubDate: String,
     val description: String,

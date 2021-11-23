@@ -1,6 +1,5 @@
 package com.kobe.feed.data
 
-import android.util.Log
 import com.kobe.feed.core.FeedEpisodeDomain
 import com.kobe.rss_parser.RssParserArticle
 
@@ -25,7 +24,6 @@ internal class FeedEpisodeDomainMapperDefault : FeedEpisodeDomainMapper {
 
                 FeedEpisodeDomain(
                     title,
-                    dto.author ?: "",
                     audio,
                     pubDate,
                     dto.description ?: "",

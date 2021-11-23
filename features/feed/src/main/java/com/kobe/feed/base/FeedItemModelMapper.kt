@@ -13,7 +13,6 @@ internal class FeedItemModelMapperDefault : FeedItemModelMapper {
     override fun toModel(domain: FeedEpisodeDomain): FeedCommonItemModel {
         return FeedCommonItemModel.Episode(
             domain.title,
-            domain.author,
             domain.audio,
             domain.pubDate,
             domain.description,
